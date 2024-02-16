@@ -338,6 +338,31 @@ Transform:
   m_Father: {fileID: 376792170}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &295298871 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 5c7ce36d0d367c744b24bcb38b62dab9,
+    type: 3}
+  m_PrefabInstance: {fileID: 370306093}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &295298872
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295298871}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e75b9c7c3891f2d4e95c3e61ff1613f0, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &370306093
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -417,6 +442,8 @@ GameObject:
   m_Component:
   - component: {fileID: 376792170}
   - component: {fileID: 376792171}
+  - component: {fileID: 376792173}
+  - component: {fileID: 376792172}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -455,7 +482,41 @@ MonoBehaviour:
   CameraAxisTransform: {fileID: 157419400}
   minAngle: -25
   maxAngle: 30
-  RotationSpeed: 1000
+  RotationSpeed: 500
+--- !u!143 &376792172
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376792169}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 1.7
+  m_Radius: 0.3
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &376792173
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 376792169}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e81e8eb5b8c0545ab4da8bb6d89fec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Animator: {fileID: 295298872}
+  Gravity: 9.8
+  JumpForce: 6
+  Speed: 5
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
