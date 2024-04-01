@@ -8,9 +8,11 @@ public class EnemyAI : MonoBehaviour
     public List<Transform> PatrolPoints;
     public PlayerController Player;
     public float ViewAngle;
+    public float Damage = 30;
 
     private NavMeshAgent _navMeshAgent;
     private bool _isPlayerNoticed;
+    private PlayerHealth _playerHealth;
 
     void Start()
     {
@@ -21,13 +23,23 @@ public class EnemyAI : MonoBehaviour
     private void InitComponentLinks()
     {
         _navMeshAgent = GetComponent<NavMeshAgent>();
+        _playerHealth = Player.GetComponent<PlayerHealth>();
     }
 
     private void Update()
     {
         NoticePlayerUpdate();
         ChaseUpdate();
+        AttackUpdate();
         PatrolUpdate();
+    }
+
+    private void AttackUpdate()
+    {
+        if (_isPlayerNoticed && _navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
+        {
+            _playerHealth.DealDamage(Damage * Time.deltaTime);
+        }
     }
 
     private void NoticePlayerUpdate()
@@ -51,7 +63,7 @@ public class EnemyAI : MonoBehaviour
     {
         if (!_isPlayerNoticed)
         {
-            if (_navMeshAgent.remainingDistance == 0)
+            if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance)
             {
                 PickNewPatrolPoint();
             }
